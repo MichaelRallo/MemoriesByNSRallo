@@ -32,8 +32,9 @@
             #navContainer{height:30px;}
             #nav{text-align: center;}
             #nav li{ display: inline;font-family: MyWebFont; padding: 0 40px;font-size: 28px; cursor: pointer;font-weight: bold;}
-            #mediaContainer{float: right;margin-right: 50px;position: relative;bottom: -40px;}
-            #mediaContainer i{font-size: 32px; margin-right: 10px;}
+            #mediaContainer{float: right;margin-right: 50px;position: relative;bottom: -40px;z-index: 2;}
+            #mediaContainer i{font-size: 32px; margin-right: 10px;color:black;transition: opacity 0.3s ease;}
+            #mediaContainer i:hover{opacity: 0.7;}
         </style>
         <div id="header">
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -42,7 +43,10 @@
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="rightHeaderCol">
                 <div id="slogan">Memories By NSRallo LLC</div>
                 <div id="subSlogan">Capturing memories for your families</div>
-                <div id="mediaContainer"><i class="fa fa-instagram" aria-hidden="true"></i><i class="fa fa-facebook-square" aria-hidden="true"></i></div>
+                <div id="mediaContainer">
+                    <a href="https://www.instagram.com/memoriesbynsrallo_llc/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/memoriesbynsrallo/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul id="nav">
@@ -150,6 +154,9 @@
             <div class="sub-header"><span class="sub-header-text">Families</span></div>
         </div>
         
+        <div class="container">
+            <div class="sub-header"><span class="sub-header-text">Instagram Recents!</span></div>
+        </div>
         <script>
             /*This Script is for The Slider Styles.*/
             $(function() { 
@@ -227,34 +234,20 @@
                             var counter = 0;
                             var rowCounter = 0;
                             for (x in data.data) {
-                                if (counter < 6) {
-                                    switch (counter % 3) {
-                                    case 0:
-                                        $('#instaPage1').append('<div class="row" id="instaRow' + rowCounter + '"><div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 nothing sub left"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div></div>');
-                                        break;
-                                    case 1:
-                                        $('#instaRow' + rowCounter).append('<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 nothing sub middle"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>');
-                                        break;
-                                    case 2:
-                                        $('#instaRow' + rowCounter).append('<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 nothing sub right"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>');
-                                        rowCounter++;
-                                        break;
-                                    }
+                                if (counter < 4) {
+                                $('#instaPage1').append('<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>');
+                                     
                                 }
-                                else {
-                                    switch (counter % 3) {
-                                    case 0:
-                                        $('#instaPage2').append('<div class="row" id="instaRow' + rowCounter + '"><div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 nothing sub left"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div></div>');
-                                        break;
-                                    case 1:
-                                        $('#instaRow' + rowCounter).append('<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 nothing sub middle"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>');
-                                        break;
-                                    case 2:
-                                        $('#instaRow' + rowCounter).append('<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 nothing sub right"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>');
-                                        rowCounter++;
-                                        break;
-                                    }
+                                else if(counter < 8){
+                                        $('#instaPage2').append('<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nothing"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>');
+                                   
                                 }
+                            else{
+                                
+                                $('#instaPage3').append('<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nothing"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>');
+
+                                
+                            }
                                 counter++;
                             }
                         }
@@ -277,7 +270,7 @@
                     function ScaleSlider() {
                         var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
                         if (refSize) {
-                            refSize = Math.min(refSize, 600);
+                            refSize = Math.min(refSize, 1170);
                             jssor_1_slider.$ScaleWidth(refSize);
                         }
                         else {
@@ -290,20 +283,18 @@
                     $(window).bind("orientationchange", ScaleSlider);
                 });
             </script>
-    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1300px;height:500px;overflow:hidden;visibility:hidden;">
+    <div class="container">
+    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1170px;height:500px;overflow:hidden;visibility:hidden;">
         <!-- Loading Screen -->
         <div data-u="loading" style="position:absolute;top:0px;left:0px;background-color:rgba(0,0,0,0.7);">
             <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
             <div style="position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
         </div>
-        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1300px;height:500px;overflow:hidden;">
+        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1170px;height:500px;overflow:hidden;">
 
-            <div id="instaPage1">
-                
-            </div>
-            <div id="instaPage2">
-                
-            </div>
+            <div id="instaPage1"></div>
+            <div id="instaPage2"></div>
+            <div id="instaPage3"></div>
         </div>
         <!-- Bullet Navigator -->
         <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
@@ -314,17 +305,28 @@
         <span data-u="arrowleft" class="jssora22l" style="top:0px;left:12px;width:40px;height:58px;" data-autocenter="2"></span>
         <span data-u="arrowright" class="jssora22r" style="top:0px;right:12px;width:40px;height:58px;" data-autocenter="2"></span>
     </div>
+     </div>   
+        
+        
+        
+        
+        
+        
         
     <style>
         #footerLogo{max-height: 100px;}
+        #footer{
+            background-color:rgba(254,185,202, 0.4);
+        }
     </style>
-    <div class="container-fluid">
+        <div class="row">
+    <div class="container-fluid" id="footer">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <img id="footerLogo" src="images/logo" class="image-responsive">
+            <img id="footerLogo" src="images/logo.png" class="image-responsive">
             
         </div>    
     </div>
-        
+        </div>
         
         
         
