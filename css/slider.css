@@ -1,0 +1,149 @@
+    /***************************************************/
+    /********************Slider Styles******************/
+    /***************************************************/
+
+    }
+    /*Styles for Responsive Slider+Coontainer*/
+    .rslides {
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    }
+    .rslides li {
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+    }
+    .rslides li:first-child {
+    position: relative;
+    display: block;
+    float: left;
+    }
+    .rslides img {
+    display: block;
+    height: auto;
+    float: left;
+    width: 100%;
+    border: 0;
+    }
+    .rslides_container {
+    position: relative;
+    float: left;
+    width: 100%;
+    }
+    /*Styles for Nav Arrows (Ours is Transparent)*/
+    .arrow-btns_nav {
+    position: absolute;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    top: 70%;
+    left: 25px;
+    z-index: 3;
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none;
+    height: 35px;
+    width: 35px;
+    background: transparent url(../images/arrow-left.png) no-repeat left top;
+    background-size: cover;
+    margin-top: -45px;
+    opacity:0.4;
+    transition: opacity 0.2s;
+    }
+    .arrow-btns_nav:hover{
+    opacity:0.9;
+    }
+    /*Positioning*/
+    .arrow-btns_nav.next {
+    position: absolute;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    top: 70%;
+    z-index: 3;
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none;
+    height: 35px;
+    width: 35px;
+    background: transparent url(../images/arrow-right.png) no-repeat right top;
+    background-size: cover;
+    margin-top: -45px;
+    left: auto;
+    right: 25px;
+    }
+    /*Removes the Lame Outline for Nav Buttons*/
+    .centered-btns_nav:focus,
+    .arrow-btns_nav:focus,
+    .large-btns_nav:focus {
+    outline: none;
+    }
+    /*Positioning for the Nav Buttons Container*/
+    .centered-btns_tabs,
+    .arrow-btns_tabs,
+    .large-btns_tabs {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+    position: relative;
+    z-index: 9;
+    }
+    .arrow-btns_tabs{
+    margin-top: -40px;
+    }
+    /*Positioning for the Nav Buttons*/
+    .centered-btns_tabs li,
+    .arrow-btns_tabs li,
+    .large-btns_tabs li {
+    display: inline;
+    float: none;
+    _float: left;
+    *float: left;
+    margin-right: 5px;
+    }
+    /*Styles for the Nav Buttons*/
+    .centered-btns_tabs a,
+    .arrow-btns_tabs a,
+    .large-btns_tabs a {
+    text-indent: -9999px;
+    overflow: hidden;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    background: white;
+    /*background: rgba(0,0,0, .8);*/
+    display: inline-block;
+    _display: block;
+    *display: block;
+    -webkit-box-shadow: inset 0 0 2px 0 rgba(0,0,0,.3);
+    -moz-box-shadow: inset 0 0 2px 0 rgba(0,0,0,.3);
+    box-shadow: inset 0 0 2px 0 rgba(0,0,0,.3);
+    width: 20px;
+    height: 20px;
+    margin: 0px 8px;
+    }
+    /*When Screen Starts Getting Small*/
+    @media (max-width: 767px) {
+    .arrow-btns_tabs a{
+    width: 8px;
+    height: 8px;
+    }
+    arrow-btns_tabs {
+    margin-top:-40px;
+    }
+    }
+    /*Style for the Active Nav Button*/
+    .centered-btns_here a,
+    .arrow-btns_here a,
+    .large-btns_here a {
+    background: #00bccb;
+    /*background: rgba(0,0,0, .8);*/
+    }
+    #sliderContainer{
+        position: relative;
+        display: block;
+        overflow: hidden;
+            }
