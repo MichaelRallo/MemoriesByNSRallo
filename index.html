@@ -44,6 +44,7 @@
                 <div id="slogan">Memories By NSRallo LLC</div>
                 <div id="subSlogan">Capturing memories for your families</div>
                 <div id="mediaContainer">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
                     <a href="https://www.instagram.com/memoriesbynsrallo_llc/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     <a href="https://www.facebook.com/memoriesbynsrallo/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
                 </div>
@@ -144,8 +145,36 @@
             
             
         </div>
-        <div class="container">
+        
+        <style>
+            .padding-0{padding: 0;}
+            .padding-5{padding: 5px;}
+            #seniorsContainer #smallSeniors img{transition: filter 0.5s ease, transform 0.5s ease;}
+            #seniorsContainer .image-holder{overflow: hidden;}
+            #seniorsContainer #smallSeniors img:hover{-webkit-filter: grayscale(100%); filter: grayscale(100%);
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);}
+            #mainSenior{-webkit-filter: grayscale(100%); filter: grayscale(100%);transition: filter 0.5s ease, transform 0.5s ease;}
+            #mainSenior:hover{-webkit-filter: grayscale(0%); filter: grayscale(0%);-moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);}
+        </style>
+        <div class="container" id="seniorsContainer">
             <div class="sub-header"><span class="sub-header-text">Stunning Seniors</span></div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding-right:20px;padding-top:5px;">
+                <div class="image-holder">
+                    <img class="img-responsive" src="images/senior1c.jpg" alt="senior1" id="mainSenior">
+                </div>
+            
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="smallSeniors">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive" src="images/senior2.jpg" alt="senior1"></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive" src="images/senior3.jpg" alt="senior1"></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive" src="images/senior4.jpg" alt="senior1"></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive" src="images/senior5.jpg" alt="senior1"></div></div>
+            </div>
+            
         </div>
         <div class="container">
             <div class="sub-header"><span class="sub-header-text">Little Miracles</span></div>
