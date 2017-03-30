@@ -12,16 +12,27 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 
 try
 {
-    $emailText = "You have new message from contact form\n=============================\n";
+    $message = "Line 1\r\nLine 2\r\nLine 3";
 
-    foreach ($_POST as $key => $value) {
+    // In case any of our lines are larger than 70 characters, we should use wordwrap()
+    $message = wordwrap($message, 70, "\r\n");
 
-        if (isset($fields[$key])) {
-            $emailText .= "$fields[$key]: $value\n";
-        }
-    }
-
-    mail($sendTo, $subject, $emailText, "From: " . $from);
+    // Send
+    mail('rallomike@yahoo.com', 'My Subject', $message);
+    $responseArray = array('type' => 'success', 'message' => $okMessage);
+    
+    
+    
+//    $emailText = "You have new message from contact form\n=============================\n";
+//
+//    foreach ($_POST as $key => $value) {
+//
+//        if (isset($fields[$key])) {
+//            $emailText .= "$fields[$key]: $value\n";
+//        }
+//    }
+//
+//    mail($sendTo, $subject, $emailText, "From: " . $from);
 
     $responseArray = array('type' => 'success', 'message' => $okMessage);
 }
