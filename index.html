@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css"> </head>
-
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <body>
     <div class="container-fluid">
         <style>
@@ -35,6 +36,42 @@
             #mediaContainer{float: right;margin-right: 50px;position: relative;bottom: -40px;z-index: 2;}
             #mediaContainer i{font-size: 32px; margin-right: 10px;color:black;transition: opacity 0.3s ease;}
             #mediaContainer i:hover{opacity: 0.7;}
+            
+            #nav>li a{
+                color: black;
+                width: 100%;
+                position: relative;
+                text-decoration: none;
+                -webkit-transition: all 0.3s ease-in-out 0s;
+                transition: all 0.3s ease-in-out 0s;
+            }
+            #nav>li a:hover{
+                opacity: 0.7;
+            }
+            #nav>li a:before {
+                content: "";
+                z-index: -1;
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                bottom:5px;
+                background-color: rgba(0,0,0,0.5);
+                visibility: hidden;
+                -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+                -webkit-transition: all 0.3s ease-in-out 0s;
+                transition: all 0.3s ease-in-out 0s;
+            }
+            #nav>li:hover:before,
+            #nav>li:hover a:before {
+                visibility: visible;
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+            }
+
+
         </style>
         <div id="header">
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -44,18 +81,18 @@
                 <div id="slogan">Memories By NSRallo LLC</div>
                 <div id="subSlogan">Capturing memories for your families</div>
                 <div id="mediaContainer">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <i class="fa fa-envelope" aria-hidden="true" data-toggle="modal" data-target="#myModal"></i>
                     <a href="https://www.instagram.com/memoriesbynsrallo_llc/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     <a href="https://www.facebook.com/memoriesbynsrallo/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul id="nav">
-                    <li>Sweet Love</li>
-                    <li>Stunning Seniors</li>
-                    <li>Little Miracles</li>
-                    <li>Families</li>
-                    <li>Maternity Bliss</li>
+                    <li><a id="love">Love is Bliss</a></li>
+                    <li><a id="seniors">Stunning Seniors</a></li>
+                    <li><a id="babies">Little Miracles</a></li>
+                    <li><a id="families">Families</a></li>
+                    <li><a id="maternity">Maternity Bliss</a></li>
                 
                 </ul>
             </div>
@@ -78,7 +115,7 @@
                 margin: 40px 0 40px;
 }
             .sub-header-text{background-color: white;font-family: MyWebFont;font-size: 50px;padding: 0 20px;}
-            
+
             
         </style>
         <!-- Slideshow 4 -->
@@ -99,8 +136,8 @@
             </ul>
         </div>
         
-        <div class="container">
-            <div class="sub-header"><span class="sub-header-text">Sweet Love</span></div>
+        <div class="container" id="loveContainer">
+            <div class="sub-header"><span class="sub-header-text">Love is Bliss</span></div>
             <link rel="stylesheet" href="css/owl.carousel.min.css">
             <link rel="stylesheet" href="css/owl.theme.default.min.css">
             <script src="js/owl.carousel.min.js"></script>
@@ -138,9 +175,18 @@
                         loop: true
                         , dots: false
                         , nav: true
-                        , margin: 10
-                    })
-                })
+                        , margin: 10,
+                        responsive: {
+                          0: {
+                            items: 2
+                          },
+                          768: {
+                            items: 4
+                          }
+                        }
+                            });
+                        });
+                   
             </script>
             
             
@@ -150,30 +196,52 @@
         <style>
             .padding-0{padding: 0;}
             .padding-5{padding: 5px;}
-            #seniorsContainer #smallSeniors img{transition: filter 0.5s ease, transform 0.5s ease;}
-            #seniorsContainer .image-holder{overflow: hidden;}
-            #seniorsContainer #smallSeniors img:hover{-webkit-filter: grayscale(100%); filter: grayscale(100%);
-  -moz-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);}
-            #mainSenior{-webkit-filter: grayscale(100%); filter: grayscale(100%);transition: filter 0.5s ease, transform 0.5s ease;}
-            #mainSenior:hover{-webkit-filter: grayscale(0%); filter: grayscale(0%);-moz-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);}
+            .image-holder{overflow: hidden;}
+            
+            .image-color-zoom{
+                transition: filter 0.5s ease, transform 0.5s ease; 
+                -webkit-transition: filter 0.5s ease, transform 0.5s ease; 
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%); 
+            }
+            
+            .image-color-zoom:hover{
+                filter: grayscale(0%);
+                -webkit-filter: grayscale(0%); 
+                transform: scale(1.2);
+                -moz-transform: scale(1.2);
+                -webkit-transform: scale(1.2);
+            }
+            .image-decolor-zoom{
+                transition: filter 0.5s ease, transform 0.5s ease; 
+                -webkit-transition: filter 0.5s ease, transform 0.5s ease; 
+                filter: grayscale(0%);
+                -webkit-filter: grayscale(0%);
+            }
+            .image-decolor-zoom:hover{ 
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%);
+                transform: scale(1.2);
+                -moz-transform: scale(1.2);
+                -webkit-transform: scale(1.2);
+            }
+       
+            
         </style>
         <div class="container" id="seniorsContainer">
             <div class="sub-header"><span class="sub-header-text">Stunning Seniors</span></div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding-right:20px;padding-top:5px;">
-                <div class="image-holder">
-                    <img class="img-responsive" src="images/senior1c.jpg" alt="senior1" id="mainSenior">
-                </div>
             
-            </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="smallSeniors">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive" src="images/senior2.jpg" alt="senior1"></div></div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive" src="images/senior3.jpg" alt="senior1"></div></div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive" src="images/senior4.jpg" alt="senior1"></div></div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive" src="images/senior5.jpg" alt="senior1"></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive image-decolor-zoom" src="images/senior8.jpg" alt="senior1"></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive image-decolor-zoom" src="images/senior9.jpg" alt="senior1"></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive image-decolor-zoom" src="images/senior10.jpg" alt="senior1"></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive image-decolor-zoom" src="images/senior11.jpg" alt="senior1"></div></div>
+            </div>
+            
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding-right:20px;padding-top:5px;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive image-decolor-zoom" src="images/senior12.jpg" alt="senior1"></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive image-decolor-zoom" src="images/senior13.jpg" alt="senior1"></div></div>
+            
             </div>
             
         </div>
@@ -181,7 +249,7 @@
         
         
         
-        <div class="container">
+        <div class="container" id="babiesContainer">
             
             <div class="sub-header"><span class="sub-header-text">Little Miracles</span></div>
             
@@ -252,7 +320,7 @@
             
             
         </div>
-        <div class="container">
+        <div class="container" id="familiesContainer">
             <div class="sub-header"><span class="sub-header-text">Families</span></div>
                         
             <div class="owl-carousel owl-theme" id="familiesSlider">
@@ -268,9 +336,6 @@
             <div class="item">
               <img src="images/family4.jpg" alt="slidePic">
             </div>
-            <div class="item">
-              <img src="images/family5.jpg" alt="slidePic">
-            </div>
           </div>
 
             
@@ -278,21 +343,21 @@
             <script>
                 $(document).ready(function () {
                     $('#familiesSlider').owlCarousel({
-                        loop: true
-                        , dots: false
-                        , nav: true
-                        , margin: 10,
-                responsiveClass: true,
-                responsive: {
-                  0: {
-                    items: 2
-                  },
-                  768: {
-                    items: 4
-                  }
-                }
-                    })
-                })
+                        loop: true, 
+                        dots: false, 
+                        nav: true, 
+                        margin: 10,
+                        responsiveClass: true,
+                        responsive: {
+                          0: {
+                            items: 2
+                          },
+                          768: {
+                            items: 4
+                          }
+                        }
+                            });
+                        });
             </script>
             
             
@@ -300,40 +365,22 @@
         
         
         
-        <div class="container" id="seniorsContainer">
+        <div class="container" id="maternityContainer">
             <div class="sub-header"><span class="sub-header-text">Maternity Bliss</span></div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding-right:20px;padding-top:5px;">
                 <div class="image-holder">
-                    <img class="img-responsive" src="images/maternity3.jpg" alt="senior1" id="mainSenior">
+                    <img class="img-responsive image-color-zoom" src="images/maternity3.jpg" alt="senior1" id="mainSenior">
                 </div>
             
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="smallSeniors">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive" src="images/maternity2.jpg" alt="senior1"></div></div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive" src="images/maternity4.jpg" alt="senior1"></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive image-decolor-zoom" src="images/maternity2.jpg" alt="senior1"></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive image-decolor-zoom" src="images/maternity4.jpg" alt="senior1"></div></div>
             </div>
             
         </div>
         
-        
-        
-        <div class="container">
-            <div class="sub-header"><span class="sub-header-text">Instagram Recents!</span></div>
-        </div>
-        <script>
-            /*This Script is for The Slider Styles.*/
-            $(function() { 
-                $(".rslides").responsiveSlides({
-                    auto: true,
-                    pager: false,
-                    nav: true,
-                    speed: 500,
-                    namespace: "arrow-btns"
-                });
-            });
-        </script>
-        
-        
+
         
         <style>
     .jssora08l2 {
@@ -384,7 +431,7 @@
                 jQuery(document).ready(function ($) {
                     //To get Token, go to: http://instagram.pixelunion.net/ and click Generate Access Token
                     var token = '2261728858.1677ed0.154cd28290a4401abb40e4bde2c434b4'
-                        , num_photos = 12;
+                        , num_photos = 4;
                     $.ajax({
                         url: 'https://api.instagram.com/v1/users/self/media/recent'
                         , dataType: 'jsonp'
@@ -394,105 +441,157 @@
                             , count: num_photos
                         }
                         , success: function (data) {
-                            var counter = 0;
-                            var rowCounter = 0;
                             for (x in data.data) {
-                                if (counter < 4) {
-                                $('#instaPage1').append('<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>');
-                                     
-                                }
-                                else if(counter < 8){
-                                        $('#instaPage2').append('<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nothing"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>');
-                                   
-                                }
-                            else{
-                                
-                                $('#instaPage3').append('<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nothing"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>');
-
-                                
+                                $('#instagramContainer').append($('<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6"><a href="' + data.data[x].link + '" target="_blank"><img class="img-responsive" src="' + data.data[x].images.low_resolution.url + '"></div>'));
                             }
-                                counter++;
-                            }
+                         
                         }
                         , error: function (data) {
                             console.log(data);
                         }
                     });
-                    //Slider Properties
-                    var jssor_1_options = {
-                        $AutoPlay: false
-                        , $DragOrientation: 1
-                        , $PlayOrientation: 1
-                        , $Loop: 0
-                        , $ArrowNavigatorOptions: {
-                            $Class: $JssorArrowNavigator$
-                        }
-                    };
-                    var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-                    //Responsive Code Stuffs
-                    function ScaleSlider() {
-                        var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-                        if (refSize) {
-                            refSize = Math.min(refSize, 1170);
-                            jssor_1_slider.$ScaleWidth(refSize);
-                        }
-                        else {
-                            window.setTimeout(ScaleSlider, 30);
-                        }
-                    }
-                    ScaleSlider();
-                    $(window).bind("load", ScaleSlider);
-                    $(window).bind("resize", ScaleSlider);
-                    $(window).bind("orientationchange", ScaleSlider);
                 });
             </script>
-    <div class="container">
-    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1170px;height:500px;overflow:hidden;visibility:hidden;">
-        <!-- Loading Screen -->
-        <div data-u="loading" style="position:absolute;top:0px;left:0px;background-color:rgba(0,0,0,0.7);">
-            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-            <div style="position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        <div class="container" id="instagramContainer">
+            <div class="sub-header"><span class="sub-header-text">Instagram Recents!</span></div>
         </div>
-        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1170px;height:500px;overflow:hidden;">
-
-            <div id="instaPage1"></div>
-            <div id="instaPage2"></div>
-            <div id="instaPage3"></div>
-        </div>
-        <!-- Bullet Navigator -->
-        <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
-            <!-- bullet navigator item prototype -->
-            <div data-u="prototype" style="width:16px;height:16px;"></div>
-        </div>
-        <!-- Arrow Navigator -->
-        <span data-u="arrowleft" class="jssora22l" style="top:0px;left:12px;width:40px;height:58px;" data-autocenter="2"></span>
-        <span data-u="arrowright" class="jssora22r" style="top:0px;right:12px;width:40px;height:58px;" data-autocenter="2"></span>
-    </div>
-     </div>   
         
         
-        
-        
-        
-        
+ 
         
     <style>
         #footerLogo{max-height: 100px;}
         #footer{
+            margin-top: 20px;
             background-color:rgba(254,185,202, 0.4);
         }
-    </style>
-        <div class="row">
-    <div class="container-fluid" id="footer">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <img id="footerLogo" src="images/logo.png" class="image-responsive">
+        #footerMedia{
+            margin-top: 30px;
+            text-align: center;
             
-        </div>    
-    </div>
+        }
+        
+        #footerMedia i{font-size: 32px; margin-right: 10px;color:black;transition: opacity 0.3s ease;}
+        #footerMedia i:hover{opacity: 0.7;}
+    </style>
+    <div class="container-fluid" id="footer">
+        <div class="container">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <img id="footerLogo" src="images/logo.png" class="image-responsive">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div id="footerMedia">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <a href="https://www.instagram.com/memoriesbynsrallo_llc/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/memoriesbynsrallo/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                </div>
+            </div> 
         </div>
         
+    </div>
         
         
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Send a Message</h4>
+        </div>
+        <div class="modal-body">
+            <form id="contact-form" method="post" action="php/contact.php" role="form">
+                <div class="messages"></div>
+                <div class="controls">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_name">Firstname *</label>
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_lastname">Lastname *</label>
+                                <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_email">Email *</label>
+                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_phone">Phone</label>
+                                <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="form_message">Message *</label>
+                                <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-success btn-send" value="Send message"> </div>
+                    </div>
+                </div>
+            </form>   
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+        
+        
+     
+    <script>
+    $(function () {
+
+        $('#contact-form').validator();
+
+        $('#contact-form').on('submit', function (e) {
+            if (!e.isDefaultPrevented()) {
+                var url = "php/contact.php";
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: $(this).serialize(),
+                    success: function (data)
+                    {
+                        var messageAlert = 'alert-' + data.type;
+                        var messageText = data.message;
+
+                        var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                        if (messageAlert && messageText) {
+                            $('#contact-form').find('.messages').html(alertBox);
+                            $('#contact-form')[0].reset();
+                        }
+                    }
+                });
+                return false;
+            }
+        })
+    });    
+        
+    </script>
         
     <script src="js/main.js"></script>
 </body>
