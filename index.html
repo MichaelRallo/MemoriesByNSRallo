@@ -7,16 +7,15 @@
     <title>The HTML5 Herald</title>
     <meta name="description" content="Nitu">
     <meta name="author" content="Michael Rallo">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css"> 
     <script src="js/jquery-3.2.0.min.js"></script>
-    <script src="js/validator.js"></script>
     <script src="js/responsiveslides.min.js"></script>
     <script src="js/jssor.slide.mini.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/main.css"> </head>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
 <body>
     <div class="container-fluid">
         <style>
@@ -25,7 +24,7 @@
             font-family: MyWebFont;
             src: url('fonts/allura.ttf') format('truetype')
             }
-            
+            .mainFontStyle{font-family: MyWebFont;}
             #header{height:200px;position: relative; display: block; overflow: hidden; background-color:rgba(254,185,202, 0.4);z-index: 2;}
             #logo{max-height: 170px;}
             #rightHeaderCol{text-align: center;padding-top: 50px;}
@@ -71,6 +70,14 @@
                 -webkit-transform: scaleX(1);
                 transform: scaleX(1);
             }
+            
+            @media(max-width:767px){
+                #logo{margin:auto;}
+                 #rightHeaderCol{text-align: center;padding-top: 0;}
+                #header{height: auto;}
+                #nav li{ display: block}
+                #mediaContainer{bottom:0;float:none;margin:10px auto 10px auto}
+            }
 
 
         </style>
@@ -114,9 +121,14 @@
                 border-bottom: 1px solid #b87333;
                 line-height: 0.1em;
                 margin: 40px 0 40px;
-}
+            }
             .sub-header-text{background-color: white;font-family: MyWebFont;font-size: 50px;padding: 0 20px;}
-
+            @media(max-width:767px){
+                #sliderContainer{  
+                    top:0;
+                    margin-bottom: 0;
+                }
+            }
             
         </style>
         <!-- Slideshow 4 -->
@@ -136,6 +148,19 @@
                 </li>
             </ul>
         </div>
+        
+        <script>
+            /*This Script is for The Slider Styles.*/
+            $(function() { 
+                $(".rslides").responsiveSlides({
+                    auto: true,
+                    pager: false,
+                    nav: true,
+                    speed: 500,
+                    namespace: "arrow-btns"
+                });
+            });
+        </script>
         
         <div class="container" id="loveContainer">
             <div class="sub-header"><span class="sub-header-text">Love is Bliss</span></div>
@@ -474,11 +499,15 @@
         
         #footerMedia i{font-size: 32px; margin-right: 10px;color:black;transition: opacity 0.3s ease;}
         #footerMedia i:hover{opacity: 0.7;}
+        @media(max-width:767px){
+            #footerLogo{margin:auto;}
+            #footerMedia{margin: 10px auto 10px auto;}
+        }
     </style>
     <div class="container-fluid" id="footer">
         <div class="container">
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <img id="footerLogo" src="images/logo.png" class="image-responsive">
+                <img id="footerLogo" src="images/logo.png" class="img-responsive">
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div id="footerMedia">
@@ -491,7 +520,12 @@
         
     </div>
         
-        
+<style>
+    .modal-footer{padding:5px;background-color:rgba(254,185,202, 0.4);}      
+    .modal-header{padding-bottom: 0;background-color:rgba(254,185,202, 0.4);}
+    .modal-body{background-color:rgba(255,215,0, 0.1);}
+    .font-size-medium{font-size: 24px;}
+</style>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -500,57 +534,13 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Send a Message</h4>
+            <h1 class="mainFontStyle">Send a Message</h1>
         </div>
         <div class="modal-body">
-            <form id="contact-form" method="post" action="php/contact.php" role="form">
-                <div class="messages"></div>
-                <div class="controls">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="form_name">Firstname *</label>
-                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="form_lastname">Lastname *</label>
-                                <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="form_email">Email *</label>
-                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="form_phone">Phone</label>
-                                <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="form_message">Message *</label>
-                                <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <input type="submit" class="btn btn-success btn-send" value="Send message"> </div>
-                    </div>
-                </div>
-            </form>   
+            <div class="font-size-medium mainFontStyle bold">To schedule an appointment, please contact me at:</div>
+            <a class="font-size-medium mainFontStyle bold" href="mailto:memoriesbynsrallo@gmail.com">memoriesbynsrallo@gmail.com</a>
+            
+                   
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -559,40 +549,7 @@
 
     </div>
 </div>
-        
-        
-     
-    <script>
-    $(function () {
 
-        $('#contact-form').validator();
-
-        $('#contact-form').on('submit', function (e) {
-            if (!e.isDefaultPrevented()) {
-                var url = "php/contact.php";
-
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: $(this).serialize(),
-                    success: function (data)
-                    {
-                        var messageAlert = 'alert-' + data.type;
-                        var messageText = data.message;
-
-                        var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-                        if (messageAlert && messageText) {
-                            $('#contact-form').find('.messages').html(alertBox);
-                            $('#contact-form')[0].reset();
-                        }
-                    }
-                });
-                return false;
-            }
-        })
-    });    
-        
-    </script>
         
     <script src="js/main.js"></script>
 </body>
