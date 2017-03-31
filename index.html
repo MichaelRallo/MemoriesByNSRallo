@@ -19,6 +19,7 @@
 <body>
     <div class="container-fluid">
         <style>
+            body{background-color: lavenderblush;color:#323348}
             .container,.container-fluid{padding:0;}
             @font-face {
             font-family: MyWebFont;
@@ -34,11 +35,11 @@
             #nav{text-align: center;}
             #nav li{ display: inline;font-family: MyWebFont; padding: 0 40px;font-size: 28px; cursor: pointer;font-weight: bold;}
             #mediaContainer{float: right;margin-right: 50px;position: relative;bottom: -40px;z-index: 2;}
-            #mediaContainer i{font-size: 32px; margin-right: 10px;color:black;transition: opacity 0.3s ease;}
+            #mediaContainer i{font-size: 32px; margin-right: 10px;color:#323348;transition: opacity 0.3s ease;}
             #mediaContainer i:hover{opacity: 0.7;}
             
             #nav>li a{
-                color: black;
+                color: #323348;
                 width: 100%;
                 position: relative;
                 text-decoration: none;
@@ -132,7 +133,7 @@
                 line-height: 0.1em;
                 margin: 40px 0 40px;
             }
-            .sub-header-text{background-color: white;font-family: MyWebFont;font-size: 50px;padding: 0 20px;}
+            .sub-header-text{background-color:lavenderblush;;font-family: MyWebFont;font-size: 50px;padding: 0 20px;}
             @media(max-width:767px){
                 #sliderContainer{  
                     top:0;
@@ -491,9 +492,15 @@
                     });
                 });
             </script>
-        <div class="container" id="instagramContainer">
-            <div class="sub-header sub-header-big"><span class="sub-header-text">Instagram Recents!</span></div>
-            <div class="sub-header sub-header-small"><span class="sub-header-text">Instagram</span></div>
+        <style>
+            #instagramContainerWrapper{margin-top: 20px;padding-bottom: 20px; background-color:white;}
+            #instagramContainerWrapper .sub-header-text{background-color:white;}
+        </style>
+        <div class="container-fluid" id="instagramContainerWrapper">
+            <div class="container" id="instagramContainer">
+                <div class="sub-header sub-header-big"><span class="sub-header-text">Instagram Recents!</span></div>
+                <div class="sub-header sub-header-small"><span class="sub-header-text">Instagram</span></div>
+            </div>
         </div>
         
         
@@ -502,8 +509,9 @@
     <style>
         #footerLogo{max-height: 100px;}
         #footer{
-            margin-top: 20px;
-            background-color:rgba(254,185,202, 0.4);
+/*            margin-top: 20px;*/
+/*            background-color:rgba(254,185,202, 0.4);*/
+            background-color:lavenderblush;
         }
         #footerMedia{
             margin-top: 30px;
@@ -511,7 +519,7 @@
             
         }
         
-        #footerMedia i{font-size: 32px; margin-right: 10px;color:black;transition: opacity 0.3s ease;}
+        #footerMedia i{font-size: 32px; margin-right: 10px;color:#323348;transition: opacity 0.3s ease;}
         #footerMedia i:hover{opacity: 0.7;}
         @media(max-width:767px){
             #footerLogo{margin:auto;}
