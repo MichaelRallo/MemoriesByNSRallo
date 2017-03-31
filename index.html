@@ -70,6 +70,9 @@
                 -webkit-transform: scaleX(1);
                 transform: scaleX(1);
             }
+            
+            
+            .sub-header-small{display: none;}
             @media(max-width:1405px){
                 #mediaContainer{bottom:9px;float:none;margin:10px auto 10px auto}
             }
@@ -78,6 +81,8 @@
                 #slogan{font-size: 40px;}
             }
             @media(max-width:767px){
+                .sub-header-big{display: none;}
+                .sub-header-small{display: block;}
                 #logo{margin:auto;}
                 #rightHeaderCol{text-align: center;padding-top: 0;}
                 #header{height: auto;}
@@ -260,7 +265,8 @@
             
         </style>
         <div class="container" id="seniorsContainer">
-            <div class="sub-header"><span class="sub-header-text">Stunning Seniors</span></div>
+            <div class="sub-header sub-header-big"><span class="sub-header-text">Stunning Seniors</span></div>
+            <div class="sub-header sub-header-small"><span class="sub-header-text">Seniors</span></div>
             
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="smallSeniors">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-5"><div class="image-holder"><img class="img-responsive image-decolor-zoom" src="images/senior8.jpg" alt="senior1"></div></div>
@@ -397,7 +403,9 @@
         
         
         <div class="container" id="maternityContainer">
-            <div class="sub-header"><span class="sub-header-text">Maternity Bliss</span></div>
+            <div class="sub-header sub-header-big"><span class="sub-header-text">Maternity Bliss</span></div>
+            <div class="sub-header sub-header-small"><span class="sub-header-text">Maternity</span></div>
+            
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding-right:20px;padding-top:5px;">
                 <div class="image-holder">
                     <img class="img-responsive image-color-zoom" src="images/maternity3.jpg" alt="senior1" id="mainSenior">
@@ -484,7 +492,8 @@
                 });
             </script>
         <div class="container" id="instagramContainer">
-            <div class="sub-header"><span class="sub-header-text">Instagram Recents!</span></div>
+            <div class="sub-header sub-header-big"><span class="sub-header-text">Instagram Recents!</span></div>
+            <div class="sub-header sub-header-small"><span class="sub-header-text">Instagram</span></div>
         </div>
         
         
@@ -530,6 +539,11 @@
     .modal-header{padding-bottom: 0;background-color:rgba(254,185,202, 0.4);}
     .modal-body{background-color:rgba(255,215,0, 0.1);}
     .font-size-medium{font-size: 24px;}
+    .font-size-medium-large{font-size: 28px;}
+    @media(max-width:767px){
+        #myModal a{display: block;}
+        .font-size-medium{font-size: 20px;}
+    }
 </style>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -542,8 +556,10 @@
             <h1 class="mainFontStyle">Send a Message</h1>
         </div>
         <div class="modal-body">
-            <div class="font-size-medium mainFontStyle bold">To schedule an appointment, please contact me at:</div>
-            <a class="font-size-medium mainFontStyle bold" href="mailto:memoriesbynsrallo@gmail.com">memoriesbynsrallo@gmail.com</a>
+            <div class="font-size-medium-large mainFontStyle bold">To schedule an appointment, please contact me via:</div>
+            <p class="font-size-medium mainFontStyle bold">Email: <a href="mailto:memoriesbynsrallo@gmail.com">memoriesbynsrallo@gmail.com</a></p>
+            <p class="font-size-medium mainFontStyle bold">Facebook: <a href="https://www.facebook.com/memoriesbynsrallo/" target="_blank">facebook.com/memoriesbynsrallo</a></p>
+            <p class="font-size-medium mainFontStyle bold">Instagram: <a href="https://www.instagram.com/memoriesbynsrallo_llc/" target="_blank">instagram.com/memoriesbynsrallo_llc</a></p>
             
                    
         </div>
