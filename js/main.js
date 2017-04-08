@@ -9,4 +9,6 @@ $('#nav li a').click(function(){
 });
 
 
-
+$('#menuToggle').click(function(){
+    $('#nav').slideToggle(200);
+});
